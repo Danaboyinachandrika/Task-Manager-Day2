@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Manager</title>
+  <link rel="stylesheet" href="Day 2.Css">
+</head>
+<body>
+
+  <h1>Task Manager</h1>
+
+  <input type="text" id="taskInput" placeholder="Enter your task">
+  <button onclick="addTask()">Add Task</button>
+
+  <ul id="taskList"></ul>
+
+  <script>
+    function addTask() {
+      // Get the input value
+      var taskInput = document.getElementById("taskInput");
+      var taskText = taskInput.value;
+
+      // Check if the input is not empty
+      if (taskText.trim() !== "") {
+        // Create a new list item
+        var listItem = document.createElement("li");
+        listItem.textContent = taskText;
+
+        // Create a remove button
+        var removeButton = document.createElement("button");
+        removeButton.textContent = "Remove";
+        removeButton.onclick = function() {
+          listItem.remove();
+        };
+
+        // Append remove button to the list item
+        listItem.appendChild(removeButton);
+
+        // Add the new item to the task list
+        document.getElementById("taskList").appendChild(listItem);
+
+        // Clear the input field
+        taskInput.value = "";
+      } else {
+        alert("Please enter a valid task!");
+      }
+    }
+  </script>
+
+</body>
+</html>
